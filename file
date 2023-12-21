@@ -1,0 +1,35 @@
+  124  docker run -itd -p 8000:80 docker.io/library/httpd
+  172  docker run -d --name db postgres:9.4
+  191  docker run -d -p 5000:80 --name voting-app --link redis voting-app
+  193  docker run  -d --name db postgres:9.4
+  197  docker run  --name db postgres:9.4
+  198  docker run  --name db -e POSTGRES_PASSWORD=1234 postgres:9.4
+  200  docker run  --name db -e POSTGRES_PASSWORD=1234 postgres:9.4
+  202  docker run -d --name db -e POSTGRES_PASSWORD=1234 postgres:9.4
+  204  docker run --link redis --link db orker-app
+  205  docker run --link redis --link db --name worker-app worker-app
+  207  docker run --link redis --link db worker-app
+  211  docker run -d --link db worker-app
+  219  docker run --link redis:redis --link db:db worker-app
+  220  docker run --link redis:redis --link db:db -e POSTGRES_PASSWORD=1234 worker-app
+  239  docker run -d --name db postgres:15-alpine
+  246  docker run --name db postgres:15-alpine
+  247  docker run --name db -e POSTGRES_PASSWORD=password postgres:15-alpine
+  249  docker run --name db -e POSTGRES_PASSWORD=password postgres:15-alpine
+  251  docker run --link redis:redis --link db:db worker-app
+  252  docker run -d --name db -e POSTGRES_PASSWORD=password postgres:15-alpine
+  253  docker run --link redis:redis --link db:db worker-app
+  267  docker run -d --name db --network web -e POSTGRES_PASSWORD=password postgres:15-alpine
+  269  docker run -d --name db --network web -e POSTGRES_PASSWORD=password postgres:15-alpine
+  271  docker run --network web --link redis:redis --link db:db worker-app
+  290  docker run -d --name db --network web -e POSTGRES_PASSWORD=postgres postgres:15-alpine
+  291  docker run --network web --link redis:redis --link db:db worker-app
+  292  docker run  --link redis:redis --link db:db worker-app
+  293  docker run --network web --link redis:redis --link db:db worker-app
+  298  docker run -d --name db -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres postgres:15-alpine
+  300  docker run  --link redis:redis --link db:db worker-app
+  305  docker run -d --name worker-app --link redis:redis --link db:db worker-app
+  308  docker run --link db -p 5001:80 result-app
+  312  docker run -d --name result-app --link db -p 5001:80 result-app
+  324  history | grep "docker run " 
+  325  history | grep "docker run " > file
