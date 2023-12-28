@@ -1,0 +1,45 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    networks:
+      - back-end 
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    networks:
+      - back-end
+
+  vote:
+    build:
+      context: example-voting-app/vote
+      dockerfile: Dockerfile
+    ports:
+      - 2000:80
+    networks:
+      - back-end
+      - front-end
+
+  worker:
+    build:
+      context: example-voting-app/worker
+      dockerfile: Dockerfile
+    networks:
+      - back-end
+
+  result:
+    build:
+      context: example-voting-app/result
+      dockerfile: Dockerfile
+    ports:
+      - 2001:80
+    networks:
+      - front-end
+      - back-end
+
+networks:
+  front-end:
+  back-end:
