@@ -1,0 +1,6 @@
+node
+{
+    stage('Git') {
+        git branch: 'main', url: 'https://github.com/LinuxAdmin0112/devops.git'
+    }
+}
